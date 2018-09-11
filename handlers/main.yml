@@ -1,0 +1,7 @@
+#! vim: ft=yaml ts=2:
+---
+
+- name: reload bind
+  service:
+    name: "{{ bind.service }}"
+    state: reloaded

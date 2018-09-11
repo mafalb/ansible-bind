@@ -1,0 +1,12 @@
+#! vim: ft=yaml ts=2:
+---
+
+bind:
+  packagename: bind
+  etcdir: /etc
+  mainconfig: /etc/named.conf
+  service: named
+  directory: /var/named
+  rfc1918_zones: named.rfc1912.zones
+  bind_keys: named.root.key
+  
