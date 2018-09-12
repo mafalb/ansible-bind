@@ -4,3 +4,8 @@
 bind:
   chroot: false
   etcdir: /etc
+
+  options:
+    recursion: false
+    allow_query:
+      - localhost

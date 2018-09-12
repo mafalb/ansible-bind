@@ -17,7 +17,12 @@ options {
 	dump-file 	"/var/named/data/cache_dump.db";
 	statistics-file "/var/named/data/named_stats.txt";
 	memstatistics-file "/var/named/data/named_mem_stats.txt";
-	allow-query     { localhost; };
+	{% if bind.options.allow_query -%}
+	allow-query { {{ bind.options.allow_query|join('; ') }}; };
+	{% endif -%}
+	{% if bind.options.allow_query_cache|default(false) -%}
+	allow-query-cache { {{ bind.options.allow_query_cache|join('; ') }}; };
+	{% endif %}
 
 	/* 
 	 - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
@@ -29,7 +34,7 @@ options {
 	   attacks. Implementing BCP38 within your network would greatly
 	   reduce such attack surface 
 	*/
-	recursion yes;
+	recursion {{ 'yes' if bind.options.recursion else 'no' }};
 
 	dnssec-enable yes;
 	dnssec-validation yes;

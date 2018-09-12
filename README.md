@@ -12,6 +12,12 @@ bind:
   mainconfig: /etc/named.conf
   service: named
   directory: /var/named
+
+  options:
+    recursion: false
+    allow_query:
+      - localhost
+
 ```
 
 ## Usage
