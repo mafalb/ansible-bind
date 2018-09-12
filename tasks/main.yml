@@ -23,7 +23,7 @@
 - name: bind is installed
   package:
     name: "{{ bind.packagename }}"
-    state: installed
+    state: present
 
 - name: main configuration for bind does exist
   template:
